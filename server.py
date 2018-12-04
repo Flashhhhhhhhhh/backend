@@ -25,4 +25,4 @@ class TestData(Resource):
       return "Test data not found", 404
 
 api.add_resource(TestData, "/test/<string:name>")
-app.run(debug=True)
+app.run(debug=True,host='0.0.0.0')
