@@ -1,0 +1,28 @@
+from flask import Flask
+from flask_restful import Api, Resource, reqparse
+
+app = Flask(__name__)
+api = Api(app)
+
+testData = [
+   {
+      "name" : "Barry Allen",
+      "age" : 21,
+      "occupation" : "Hosptial Analyst"
+   },
+   {
+      "name" : "test",
+      "age" : 55,
+      "occupation" : "Thing Doer"
+   },
+]
+
+class TestData(Resource):
+   def get(self, name):
+      for datum in testData:
+         if (name == datum["name"]):
+            return datum, 200
+      return "Test data not found", 404
+
+api.add_resource(TestData, "/test/<string:name>")
+app.run(debug=True)
