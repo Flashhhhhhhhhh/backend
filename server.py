@@ -35,7 +35,7 @@ class FileUpload(filename):
       print request.get_data()
       csv_data_array = request.form['file']
       csv_file = csv_data_array[0]
-      convertedFile = readFile(csvFile)
+      convertedFile = readFile(csv_file)
       return convertedFile, 200
 
 api.add_resource(TestData, "/test/<string:name>")
