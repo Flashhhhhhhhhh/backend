@@ -42,7 +42,6 @@ class Header:                                     #Object to represent a column 
       final_line = start +full_file_info+ tag + end
       return final_line
 
-
 def readFile(csv_file_path):                            #meant to take in a cvs path (using a temp currently) in order to read all column headers and include first 10 examples from each
    df = pd.read_csv(csv_file_path)
    columns = list(df.head(0))                          #gets list of all coloumn headers 
@@ -56,10 +55,6 @@ def readFile(csv_file_path):                            #meant to take in a cvs 
             #print(item);
          columnHeader_temp.add_csv_file(csv_temp);     #add csv examples to header object 
          combined_headers.append(columnHeader_temp) #add header object to global group of headers 
-
-
-
-
 
 def main():
    readFile('dataTemp.csv') 
@@ -78,7 +73,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-

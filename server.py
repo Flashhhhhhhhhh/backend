@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
-from flask import requests 
-from csvToJson.py import readFile
+from flask import request
+from csvToJson import readFile
 import werkzeug
 
 app = Flask(__name__)
@@ -29,10 +29,10 @@ class TestData(Resource):
             return datum, 200
       return "Test data not found", 404
 
-class FileUpload(filename):
-   # sending file to backend from frontend   
+class FileUpload(Resource):
+   # sending file to backend from frontend
    def post(self):
-      print request.get_data()
+      f = request.files['file']
       csv_data_array = request.form['file']
       csv_file = csv_data_array[0]
       convertedFile = readFile(csv_file)
@@ -40,4 +40,4 @@ class FileUpload(filename):
 
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
-app.run(debug=True,host='0.0.0.0')
+app.run(debug=True,host='0.0.0.0',port=5001)
