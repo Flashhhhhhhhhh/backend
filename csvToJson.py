@@ -4,7 +4,7 @@ import csv
 import json
 import pandas as pd
 
-combined_headers = {}
+combined_headers = []
 
 class CsvInfo:                                     #Object that holds the filename(lineage?) and 10 examples for a given header 
    def __init__(self, file_name):
@@ -42,7 +42,6 @@ class Header:                                     #Object to represent a column 
       final_line = start +full_file_info+ tag + end
       return final_line
 
-
 def readFile(csv_file_path):                            #meant to take in a cvs path (using a temp currently) in order to read all column headers and include first 10 examples from each
    df = pd.read_csv(csv_file_path)
    columns = list(df.head(0))                          #gets list of all coloumn headers 
@@ -55,28 +54,22 @@ def readFile(csv_file_path):                            #meant to take in a cvs 
             csv_temp.add_example(item) 
             #print(item);
          columnHeader_temp.add_csv_file(csv_temp);     #add csv examples to header object 
-         combined_headers[columnHeader] = columnHeader_temp #add header object to global group of headers 
-
-
-
-
+         combined_headers.append(columnHeader_temp) #add header object to global group of headers 
 
 def main():
    readFile('dataTemp.csv') 
    #readFile('dataTemp2.csv')
    with open('temp.json', 'w') as f:
       f.write("{\n")
-      for header_num in range(len(combined_headers)):
-         header = combined_headers.get(combined_headers.keys()[header_num])
+      header_num =0
+      while header_num < len(combined_headers):
+         header = combined_headers[header_num]
          line = header.print_header()
          if header_num != len(combined_headers) - 1:
             line = line + ","
             f.write(line + "\n")
+         header_num+=1
       f.write("}")
 
 if __name__ == '__main__':
     main()
-
-
-
-

@@ -1,54 +1,54 @@
 {
-   "disease": {
-      "dataTemp.csv":   ["hypertension", "endometriosis", "prostate cancer", "multiple sclerosis", "skin cancer", "Alzheimer's disease", "kidney disease", "breast cancer", "Alzheimer's disease", "HIV/AIDS", null],
-      "tag": [null],
-   },
-   "dob": {
-      "dataTemp.csv":   ["1944-03-09", "1966-07-02", "1981-05-31", "1945-02-13", "1939-09-03", "1956-10-16", "1946-09-30", "1963-01-17", "1946-10-21", "1958-01-31", null],
+   "id": {
+      "dataTemp.csv":   ["Amelia Nixon", "Clara Hicks", "Mason Brown", "Michael Rice", "Eleanor Ritter", "Sofia Wise", "Nevaeh Perry", "Addison Combs", "Ashley Wilson", "Levi Burns", null],
       "tag": [null],
    },
    "gender": {
       "dataTemp.csv":   ["female", "female", "male", "male", "female", "female", "female", "female", "female", "male", null],
       "tag": [null],
    },
-   "employment_status": {
-      "dataTemp.csv":   ["retired", "employed", "employed", "retired", "retired", "unemployed", "retired", "employed", "retired", "employed", null],
-      "tag": [null],
-   },
-   "marital_status": {
-      "dataTemp.csv":   ["married", "married", "married", "married", "married", "married", "married", "married", "single", "married", null],
+   "dob": {
+      "dataTemp.csv":   ["1944-03-09", "1966-07-02", "1981-05-31", "1945-02-13", "1939-09-03", "1956-10-16", "1946-09-30", "1963-01-17", "1946-10-21", "1958-01-31", null],
       "tag": [null],
    },
    "zipcode": {
       "dataTemp.csv":   ["89136", "94105", "89127", "44101", "89136", "94105", "60612", "43221", "89127", "43210", null],
       "tag": [null],
    },
-   "avg_commute": {
-      "dataTemp.csv":   ["13.38", "15.16", "23.6", "19.61", "36.55", "48.68", "30.92", "20.47", "39.13", "37.69", null],
-      "tag": [null],
-   },
-   "children": {
-      "dataTemp.csv":   ["1", "4", "2", "2", "3", "2", "0", "2", "2", "7", null],
-      "tag": [null],
-   },
-   "military_service": {
-      "dataTemp.csv":   ["no", "no", "no", "no", "no", "no", "no", "no", "no", "no", null],
-      "tag": [null],
-   },
-   "ancestry": {
-      "dataTemp.csv":   ["Portugal", "Sweden", "Germany", "Denmark", "Austria", "Austria", "Hungary", "Ireland", "Austria", "Ukraine", null],
-      "tag": [null],
-   },
-   "available_vehicles": {
-      "dataTemp.csv":   ["2", "2", "1", "3", "1", "0", "2", "3", "1", "1", null],
+   "employment_status": {
+      "dataTemp.csv":   ["retired", "employed", "employed", "retired", "retired", "unemployed", "retired", "employed", "retired", "employed", null],
       "tag": [null],
    },
    "education": {
       "dataTemp.csv":   ["bachelors", "phd/md", "masters", "bachelors", "masters", "highschool", "phd/md", "bachelors", "masters", "highschool", null],
       "tag": [null],
    },
-   "id": {
-      "dataTemp.csv":   ["Amelia Nixon", "Clara Hicks", "Mason Brown", "Michael Rice", "Eleanor Ritter", "Sofia Wise", "Nevaeh Perry", "Addison Combs", "Ashley Wilson", "Levi Burns", null],
+   "marital_status": {
+      "dataTemp.csv":   ["married", "married", "married", "married", "married", "married", "married", "married", "single", "married", null],
+      "tag": [null],
+   },
+   "children": {
+      "dataTemp.csv":   ["1", "4", "2", "2", "3", "2", "0", "2", "2", "7", null],
+      "tag": [null],
+   },
+   "ancestry": {
+      "dataTemp.csv":   ["Portugal", "Sweden", "Germany", "Denmark", "Austria", "Austria", "Hungary", "Ireland", "Austria", "Ukraine", null],
+      "tag": [null],
+   },
+   "avg_commute": {
+      "dataTemp.csv":   ["13.38", "15.16", "23.6", "19.61", "36.55", "48.68", "30.92", "20.47", "39.13", "37.69", null],
+      "tag": [null],
+   },
+   "daily_internet_use": {
+      "dataTemp.csv":   ["2.53", "6.77", "3.63", "5.0", "7.75", "3.34", "6.75", "3.01", "4.12", "3.15", null],
+      "tag": [null],
+   },
+   "available_vehicles": {
+      "dataTemp.csv":   ["2", "2", "1", "3", "1", "0", "2", "3", "1", "1", null],
+      "tag": [null],
+   },
+   "military_service": {
+      "dataTemp.csv":   ["no", "no", "no", "no", "no", "no", "no", "no", "no", "no", null],
       "tag": [null],
    },
 }
