@@ -24,7 +24,6 @@ def parseChange(change):
          #   print tag
    #print change['tag']
 
-
 def main():
   changeFile = open("headers.json")
   tagMap = open("tagMap.json")
@@ -32,8 +31,6 @@ def main():
   #tags = json.load(tagMap)
   for obj in changes:
      parseChange(changes[obj]['tag'])
-
-
 
 if __name__ == "__main__":
    main()
