@@ -1,0 +1,5 @@
+id,gender,dob,zipcode,employment_status,education,marital_status,children,ancestry,avg_commute,daily_internet_use,available_vehicles,military_service,disease
+Amelia Nixon,female,1944-03-09,89136,retired,bachelors,married,1,Portugal,13.38,2.53,2,no,hypertension
+Clara Hicks,female,1966-07-02,94105,employed,phd/md,married,4,Sweden,15.16,6.77,2,no,endometriosis
+Mason Brown,male,1981-05-31,89127,employed,masters,married,2,Germany,23.6,3.63,1,no,prostate cancer
+Michael Rice,male,1945-02-13,44101,retired,bachelors,married,2,Denmark,19.61,5,3,no,multiple sclerosis
