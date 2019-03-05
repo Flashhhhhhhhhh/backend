@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 from flask import request
-from csvToJson import readFile
+from src import CsvInterpreter
 import werkzeug
 
 app = Flask(__name__)
@@ -32,16 +32,16 @@ class TestData(Resource):
 class FileUpload(Resource):
    # sending file to backend from frontend
    def post(self):
-      f = request.files['file'] #request the csv file
-      csv_data_array = request.form['file'] # get the file array
-      csv_file = csv_data_array[0] # get the specific csv file
-      convertedFile = readFile(csv_file) #run the algorithm
+      f = request.files['data_file'] #request the csv file
+      #csv_data_array = request.form['file'] # get the file array
+      #csv_file = csv_data_array[0] # get the specific csv file
+      convertedFile = CsvInterpreter.get_headers(f) #run the algorithm
       return convertedFile, 200 #return
 
 class UpdateFinal(Resource):
    # final upload of JSON with tag system
    def post(self):
-      f = request.files['file'] #request the JSON file
+      f = request.files['data_file'] #request the JSON file
       json_data_array = request.form['file'] # get the file array
       json_file = json_data_array[0] # get the specific JSON file
       convertedFile = json_file 
@@ -50,4 +50,4 @@ class UpdateFinal(Resource):
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-app.run(debug=True,host='0.0.0.0',port=5002)
+app.run(debug=True,host='0.0.0.0',port=5001)
