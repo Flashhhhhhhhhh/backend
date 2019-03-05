@@ -32,12 +32,22 @@ class TestData(Resource):
 class FileUpload(Resource):
    # sending file to backend from frontend
    def post(self):
-      f = request.files['file']
-      csv_data_array = request.form['file']
-      csv_file = csv_data_array[0]
-      convertedFile = readFile(csv_file)
-      return convertedFile, 200
+      f = request.files['file'] #request the csv file
+      csv_data_array = request.form['file'] # get the file array
+      csv_file = csv_data_array[0] # get the specific csv file
+      convertedFile = readFile(csv_file) #run the algorithm
+      return convertedFile, 200 #return
+
+class UpdateFinal(Resource):
+   # final upload of JSON with tag system
+   def post(self):
+      f = request.files['file'] #request the JSON file
+      json_data_array = request.form['file'] # get the file array
+      json_file = json_data_array[0] # get the specific JSON file
+      convertedFile = json_file 
+      return convertedFile, 200 # return
 
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
-app.run(debug=True,host='0.0.0.0',port=5001)
+api.add_resource(UpdateFinal, "/updateFinal")
+app.run(debug=True,host='0.0.0.0',port=5002)
