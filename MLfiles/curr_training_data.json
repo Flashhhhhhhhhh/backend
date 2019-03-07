@@ -1,0 +1,10 @@
+{
+"ID Bob Phil James George Jorge Patty": {"tags": ["NAME", "PROPERNOUN", "PROPERNOUN", "PROPERNOUN", "PROPERNOUN", "PROPERNOUN", "PROPERNOUN"]},
+"SEX male female m f Male Female M F": {"tags": ["GENDER", "N", "N", "N", "N", "N", "N", "N", "N"]}, "GENDER male female m f Male Female M F": {"tags": ["GENDER", "N", "N", "N", "N", "N", "N", "N", "N"]},
+"DOB": {"tags": ["DOB"]},
+"AGE": {"tags": ["AGE"]},
+"ID 25665 7845 218 789 12546 4856": {"tags": ["ID", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER"]},
+"MARRIED married single Yes No": {"tags": ["MARRIED", "MARRIED", "N", "N", "N"]}, "married married single yes no": {"tags": ["MARRIED", "MARRIED", "N", "N", "N"]},
+"SDJFKHSAK Jill John Kate": {"tags": ["UNKNOWN", "PROPERNOUN", "PROPERNOUN", "PROPERNOUN"]}, "DFSAD": {"tags": ["UNKNOWN"]}, "AWY 8 9.6 0.8": {"tags": ["UNKNOWN", "NUMBER", "NUMBER", "NUMBER"]}, "ICQ": {"tags": ["UNKNOWN"]},
+"1 29 576 .98 1.3 34.5 345.123": {"tags": ["NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER"]}
+}

@@ -1,0 +1,12 @@
+{
+	"NAME" : {"pos": "X"},
+	"GENDER" : {"pos": "X"},
+	"DOB" : {"pos": "X"},
+	"AGE" : {"pos": "X"},
+	"ID" : {"pos": "X"},
+	"MARRIED" : {"pos": "X"},
+	"UNKNOWN": {"pos": "X"},
+	"NUMBER": {"pos": "NUM"},
+	"PROPERNOUN": {"pos": "PRON"},
+	"N": {"pos": "NOUN"}
+}
