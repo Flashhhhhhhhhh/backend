@@ -17,7 +17,8 @@ def parse_file(csv):
     for i in range(len(csv_headers)):
         example_list = []
         for ex in (data_frame[1:][ml_headers[i]]):
-            example_list.append(ex)
+            if (ex not in example_list):
+                example_list.append(ex)
         col = Column(ml_headers[i], csv_headers[i], csv, example_list)
         column_list.append(col)
 
@@ -36,6 +37,7 @@ def generate_json(column_list):
             line += ","
             isLast -= 1
         json.write("}")
+    file.close()
     return file
 
 class Column:

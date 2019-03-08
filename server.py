@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
-from flask import request
+from flask import request, jsonify
 from src import CsvInterpreter
 import werkzeug
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -36,7 +37,8 @@ class FileUpload(Resource):
       #csv_data_array = request.form['file'] # get the file array
       #csv_file = csv_data_array[0] # get the specific csv file
       convertedFile = CsvInterpreter.get_headers(f) #run the algorithm
-      return convertedFile, 200 #return
+      headers = json.load(open("headers.json", "r"))
+      return jsonify(headers) #return
 
 class UpdateFinal(Resource):
    # final upload of JSON with tag system
@@ -44,7 +46,7 @@ class UpdateFinal(Resource):
       f = request.files['data_file'] #request the JSON file
       json_data_array = request.form['file'] # get the file array
       json_file = json_data_array[0] # get the specific JSON file
-      convertedFile = json_file 
+      convertedFile = json_file
       return convertedFile, 200 # return
 
 api.add_resource(TestData, "/test/<string:name>")
