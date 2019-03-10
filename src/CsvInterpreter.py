@@ -59,5 +59,5 @@ class Column:
 
         for i in range(min(len(self.examples), 10)):
             examples_list += '"%s":[],' %(self.examples[i])
-        examples_list += '"tag":[null],"id":"%s"}' %(self.id)
+        examples_list += '"tag":[{ "id":"%s" }]}' %(self.id)
         return start + examples_list
