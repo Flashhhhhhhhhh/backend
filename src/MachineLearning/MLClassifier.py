@@ -22,10 +22,11 @@ TAG_MAP = {}
 TRAIN_DATA = []
 
 
-def runEachFile(nlp, inDirectory, filename, outDirectory,i):
-    new_filename = filename[0:-5]+str(i)+".csv" #THIS IS HARD  CODED 
+def classify_each_file(nlp, file):
+    new_filename = file.name[0:-4]+"Classified"+".csv"
     column_tags =[]
-    df = pd.read_csv((inDirectory+filename))
+
+    df = pd.read_csv(file)
     columns = list(df.head(0)) 
     column = ""
     for columnHeader in columns:
@@ -41,20 +42,26 @@ def runEachFile(nlp, inDirectory, filename, outDirectory,i):
         column_tags.append(doc[0].tag_)
         
     #write in new row 
-    with open((inDirectory+filename),'r') as old_file:
-        reader = csv.reader(old_file)
-        with open((outDirectory+new_filename), 'w') as updated_file:
-            writer = csv.writer(updated_file)
-            writer.writerow(column_tags)
-            for row in reader:
-                writer.writerow(row)
+    reader = csv.reader(file)
+    with open("./MLOutputData/"+new_filename, 'w') as updated_file:
+        writer = csv.writer(updated_file)
+        writer.writerow(column_tags)
+        for row in reader:
+            writer.writerow(row)
+
+
+def run_on_files(nlp, file_list):
+    for curr_file in file_list:
+        classify_each_file(nlp,curr_file)
+
+
 
 @plac.annotations(
     lang=("ISO Code of language to use", "option", "l", str),
     output_dir=("Optional output directory", "option", "o", Path),
     n_iter=("Number of training iterations", "option", "n", int))
 
-def main(lang='en', output_dir=None, n_iter=25):
+def main(file_list, lang='en', output_dir=None, n_iter=25):
     """Create a new model, set up the pipeline and train the tagger. In order to
     train the tagger with a custom tag map, we're creating a new Language
     instance with a custom vocab.
@@ -96,26 +103,27 @@ def main(lang='en', output_dir=None, n_iter=25):
             nlp.update(texts, annotations, sgd=optimizer, losses=losses)
         #print('Losses', losses)
 
-    input_csv_dir = "./inputData/"
-    output_csv_dir = "./MLOutputData/"
-    #read and tag all column headers in cvs given_csv 
-    i = 0   
-    for filename in os.listdir(input_csv_dir):
-        runEachFile(nlp, input_csv_dir,filename,output_csv_dir,i)
-        i+=1
+    run_on_files(nlp, file_list)
+
+    #input_csv_dir = "./inputData/"
+    #output_csv_dir = "./MLOutputData/"
+    #read and tag all column headers in cvs given_csv
+    #i = 0
+    #for filename in os.listdir(input_csv_dir):
+        #i+=1
     
     # save model to output directory
-    if output_dir is not None:
-        print("saving")
-        output_dir = Path(output_dir)
-        if not output_dir.exists():
-            output_dir.mkdir()
-        nlp.to_disk(output_dir)
-        print("Saved model to", output_dir)
-
-        # test the save model
-        print("Loading from", output_dir)
-        nlp2 = spacy.load(output_dir)
+    # if output_dir is not None:
+    #     print("saving")
+    #     output_dir = Path(output_dir)
+    #     if not output_dir.exists():
+    #         output_dir.mkdir()
+    #     nlp.to_disk(output_dir)
+    #     print("Saved model to", output_dir)
+    #
+    #     # test the save model
+    #     print("Loading from", output_dir)
+    #     nlp2 = spacy.load(output_dir)
 
 
 if __name__ == '__main__':
