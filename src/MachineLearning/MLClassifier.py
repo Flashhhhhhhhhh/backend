@@ -43,7 +43,7 @@ def classify_each_file(nlp, file):
         
     #write in new row 
     reader = csv.reader(file)
-    with open("./MLOutputData/"+new_filename, 'w') as updated_file:
+    with open("/Flash/"+new_filename, 'w') as updated_file:
         writer = csv.writer(updated_file)
         writer.writerow(column_tags)
         for row in reader:
@@ -74,12 +74,12 @@ def main(file_list, lang='en', output_dir=None, n_iter=25):
 
     
     #Open file to get tag map
-    tag_map_file = open("./MLfiles/tag_map.json")
+    tag_map_file = open("/Flash/tag_map.json")
     tag_map = json.load(tag_map_file)
     TAG_MAP = tag_map
     
     #Open file to get training data 
-    training_data_file = open("./MLfiles/curr_training_data.json")
+    training_data_file = open("/Flash/curr_training_data.json")
     training_data = json.load(training_data_file)
     for key, value in training_data.items():
         temp = [key,value]

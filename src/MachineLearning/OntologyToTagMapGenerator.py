@@ -4,9 +4,9 @@ from pprint import pprint
 
 def create_tag_map():
    #needs path to directory in S3 called "inputOntolgy"
-   ontology_dir = './inputOntology'
+   ontology_dir = '/Flash/inputOntology'
    #needs path to directory in S3 called "MLfiles"
-   tag_map_dir = './MLfiles/tag_map.json'
+   tag_map_dir = '/Flash/tag_map.json'
    for filename in os.listdir(ontology_dir):
       make_tag_map((ontology_dir+"/"+filename), tag_map_dir)
 
