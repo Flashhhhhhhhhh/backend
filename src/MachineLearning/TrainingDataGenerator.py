@@ -2,6 +2,15 @@ import json
 import os
 from pprint import pprint
 
+def create_training_data():
+   # needs path to directory in S3 called "MLfiles"
+   tag_map_dir = '/Flash/tag_map.json'
+   # needs path to directory in S3 called "MLfiles"
+   training_data_dir = '/Flash/training_data.json'
+   # needs path to directory in S3 called "MLfiles"
+   curr_training_data_dir = '/Flash/curr_training_data.json'
+
+   make_training_data(tag_map_dir, training_data_dir, curr_training_data_dir)
 
 
 def make_training_data(tag_map,training_data,curr_training_data):
@@ -24,20 +33,6 @@ def make_training_data(tag_map,training_data,curr_training_data):
       training_data_write.write('')
       training_data_write.write("\n}");
 
-
-def main():
-   #needs path to directory in S3 called "MLfiles" 
-   tag_map_dir = './MLfiles/tag_map.json'  
-   #needs path to directory in S3 called "MLfiles" 
-   training_data_dir = './MLfiles/training_data.json'
-   #needs path to directory in S3 called "MLfiles" 
-   curr_training_data_dir = './MLfiles/curr_training_data.json'
-
-   make_training_data(tag_map_dir,training_data_dir,curr_training_data_dir)
-
-
-if __name__ == "__main__":
-   main()
 
 
 
