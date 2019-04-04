@@ -30,6 +30,7 @@ def make_tag_map(filename,output_dir):
       tag_map.write(line)
       tag_map.write("}")
 
+create_tag_map()
 
 
 

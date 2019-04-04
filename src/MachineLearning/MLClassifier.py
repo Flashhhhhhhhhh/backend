@@ -11,7 +11,6 @@ import random
 from pathlib import Path
 import spacy
 from spacy.util import minibatch, compounding
-#util.path.append('/home/bonita/.env/lib/python3.6/site-packages/spacy')
 import json
 import csv
 import os
@@ -21,34 +20,20 @@ TAG_MAP = {}
 
 TRAIN_DATA = []
 
-
 def classify_each_file(nlp, file):
     new_filename = file.name[0:-4]+"Classified"+".csv"
     column_tags =[]
+    #df = pd.read_csv(file)
+    column_tags = make_column_tags(nlp,file)
+    file.seek(0)   
 
-    df = pd.read_csv(file)
-    columns = list(df.head(0)) 
-    column = ""
-    for columnHeader in columns:
-        column += str(columnHeader)
-        column = column.upper()
-        list_of_items = df[0:5][columnHeader]
-        for item in list_of_items:
-            column += " "+str(item)
-        doc = nlp(column)
-        column = ""
-        #print('Tags', [(t.text, t.tag_, t.pos_) for t in doc])
-        print('Tag', doc[0].text, doc[0].tag_)
-        column_tags.append(doc[0].tag_)
-        
-    #write in new row 
-    reader = csv.reader(file)
     with open("/Flash/"+new_filename, 'w') as updated_file:
         writer = csv.writer(updated_file)
         writer.writerow(column_tags)
-        for row in reader:
-            writer.writerow(row)
 
+    with open("/Flash/"+new_filename, 'a') as append_file:
+        for row in file:
+            append_file.write(row)
 
 def run_on_files(nlp, file_list):
     for curr_file in file_list:
@@ -74,11 +59,14 @@ def main(file_list, lang='en', output_dir=None, n_iter=25):
 
     
     #Open file to get tag map
+
     tag_map_file = open("/Flash/tag_map.json")
+    # needs path to directory in S3 called "MLfiles"
     tag_map = json.load(tag_map_file)
     TAG_MAP = tag_map
     
     #Open file to get training data 
+
     training_data_file = open("/Flash/curr_training_data.json")
     training_data = json.load(training_data_file)
     for key, value in training_data.items():
@@ -126,6 +114,26 @@ def main(file_list, lang='en', output_dir=None, n_iter=25):
     #     nlp2 = spacy.load(output_dir)
 
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+    #main()
 
+def make_column_tags(nlp,file):
+    df = pd.read_csv(file)
+    column_tags =[]
+    columns = list(df.head(0)) 
+    column = ""
+    for columnHeader in columns:
+        column += str(columnHeader)
+        column = column.upper()
+        list_of_items = df[0:5][columnHeader]
+        for item in list_of_items:
+            column += " "+str(item)
+        doc = nlp(column)
+        column = ""
+        #print('Tags', [(t.text, t.tag_, t.pos_) for t in doc])
+        print('Tag', doc[0].text, doc[0].tag_)
+        column_tags.append(doc[0].tag_)
+    return column_tags
+
+def run(file_list):
+		main(file_list)
