@@ -1,9 +1,10 @@
 #!/bin/bash
 
-gitResults=$(git pull)
+gitResults=`git pull`
 
-if [ `echo $gitResults | grep "Already up to date."` ] ; then
+if [[ $gitResults == "Already up to date." ]] ; then
    exit 0
 else 
-   eval `systemctl restart FlashCapstone`
+   eval systemctl restart FlashCapstone > /dev/null
+   exit 2
 fi
