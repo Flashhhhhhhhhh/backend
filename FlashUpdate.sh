@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /Flash/backend
 gitResults=`git pull`
 
 if [[ $gitResults == "Already up to date." ]] ; then
