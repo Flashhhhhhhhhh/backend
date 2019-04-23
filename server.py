@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 from flask import request, jsonify
-from src import CsvInterpreter
+from src import DataClassifier
 import werkzeug
 import json
 
@@ -33,12 +33,7 @@ class TestData(Resource):
 class FileUpload(Resource):
    # sending file to backend from frontend
    def post(self):
-      f = request.files['data_file'] #request the csv file
-      #csv_data_array = request.form['file'] # get the file array
-      #csv_file = csv_data_array[0] # get the specific csv file
-      convertedFile = CsvInterpreter.get_headers(f) #run the algorithm
-      headers = json.load(open("headers.json", "r"))
-      return jsonify(headers) #return
+      return DataClassifier.classify_data(request.files['data_file'])
 
 class UpdateFinal(Resource):
    # final upload of JSON with tag system
@@ -52,4 +47,4 @@ class UpdateFinal(Resource):
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-app.run(debug=True,host='0.0.0.0',port=5001)
+app.run(debug=True,host='0.0.0.0',port=5000)
