@@ -4,7 +4,7 @@ import pandas as pd
 import uuid
 
 def get_headers(csv_file):
-    column_list = parse_file("../MachineLearning/MLOutputData/" + csv_file)
+    column_list = parse_file("/Flash/" + csv_file)
     json = generate_json(column_list)
     return json
 

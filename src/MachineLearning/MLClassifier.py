@@ -21,19 +21,21 @@ TAG_MAP = {}
 TRAIN_DATA = []
 
 def classify_each_file(nlp, file):
-    new_filename = file.name[0:-4]+"Classified"+".csv"
+    new_filename = file.name+"Classified.csv"
     column_tags =[]
     #df = pd.read_csv(file)
     column_tags = make_column_tags(nlp,file)
-    file.seek(0)   
+    file.seek(0)
 
     with open("/Flash/"+new_filename, 'w') as updated_file:
         writer = csv.writer(updated_file)
         writer.writerow(column_tags)
 
-    with open("/Flash/"+new_filename, 'a') as append_file:
+    with open("/Flash/"+new_filename, 'ab') as append_file:
         for row in file:
             append_file.write(row)
+
+    print(new_filename)
 
 def run_on_files(nlp, file_list):
     for curr_file in file_list:
@@ -46,7 +48,7 @@ def run_on_files(nlp, file_list):
     output_dir=("Optional output directory", "option", "o", Path),
     n_iter=("Number of training iterations", "option", "n", int))
 
-def main(file_list, lang='en', output_dir=None, n_iter=25):
+def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
     """Create a new model, set up the pipeline and train the tagger. In order to
     train the tagger with a custom tag map, we're creating a new Language
     instance with a custom vocab.
@@ -57,29 +59,27 @@ def main(file_list, lang='en', output_dir=None, n_iter=25):
     tagger = nlp.create_pipe('tagger')
     # Add the tags. This needs to be done before you start training.
 
-    
     #Open file to get tag map
 
     tag_map_file = open("/Flash/tag_map.json")
     # needs path to directory in S3 called "MLfiles"
     tag_map = json.load(tag_map_file)
     TAG_MAP = tag_map
-    
-    #Open file to get training data 
+
+    #Open file to get training data
 
     training_data_file = open("/Flash/curr_training_data.json")
     training_data = json.load(training_data_file)
     for key, value in training_data.items():
         temp = [key,value]
         TRAIN_DATA.append(temp)
-    #TRAIN_DATA = training_data
-    
-    #reads in tags 
+
+    #reads in tags
     for tag, values in TAG_MAP.items():
         tagger.add_label(tag, values)
     nlp.add_pipe(tagger)
 
-    #trains the model 
+    #trains the model
     optimizer = nlp.begin_training()
     for i in range(n_iter):
         random.shuffle(TRAIN_DATA)
@@ -89,38 +89,13 @@ def main(file_list, lang='en', output_dir=None, n_iter=25):
         for batch in batches:
             texts, annotations = zip(*batch)
             nlp.update(texts, annotations, sgd=optimizer, losses=losses)
-        #print('Losses', losses)
 
     run_on_files(nlp, file_list)
-
-    #input_csv_dir = "./inputData/"
-    #output_csv_dir = "./MLOutputData/"
-    #read and tag all column headers in cvs given_csv
-    #i = 0
-    #for filename in os.listdir(input_csv_dir):
-        #i+=1
-    
-    # save model to output directory
-    # if output_dir is not None:
-    #     print("saving")
-    #     output_dir = Path(output_dir)
-    #     if not output_dir.exists():
-    #         output_dir.mkdir()
-    #     nlp.to_disk(output_dir)
-    #     print("Saved model to", output_dir)
-    #
-    #     # test the save model
-    #     print("Loading from", output_dir)
-    #     nlp2 = spacy.load(output_dir)
-
-
-#if __name__ == '__main__':
-    #main()
 
 def make_column_tags(nlp,file):
     df = pd.read_csv(file)
     column_tags =[]
-    columns = list(df.head(0)) 
+    columns = list(df.head(0))
     column = ""
     for columnHeader in columns:
         column += str(columnHeader)
@@ -135,5 +110,3 @@ def make_column_tags(nlp,file):
         column_tags.append(doc[0].tag_)
     return column_tags
 
-def run(file_list):
-		main(file_list)
