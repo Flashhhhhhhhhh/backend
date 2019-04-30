@@ -9,6 +9,7 @@ makeFrontend () {
    eval cd /Flash
    eval git pull https://github.com/Flashhhhhhhhhh/frontend.git
    eval cp /Flash/frontend/build/* /var/www/html/
+   eval rm -rf /Flash/frontend
 }
 
 makeBackend () {
@@ -33,11 +34,12 @@ checkPrerequisites () {
    fi
    if [[ -d /Flash ]] ; then
       echo -e "Flash already installed.\nWould you like to update? [y/n]: "
-      while read line do
+      while read line; do
          if [ $line == "n" ] ; then
             echo -e "Aborting"
             exit 0
          elif [ $line == "y" ] ; then
+            update=true
             break
          fi
       done
@@ -45,8 +47,11 @@ checkPrerequisites () {
 }
 
 main () {
+   update=false
    checkPrerequisites
-   eval mkdir /Flash
+   if [[ ! $update ]] ; then
+      eval mkdir /Flash
+   fi
    makeBackend
    makeFrontend
    eval chmod -R 777 /Flash
