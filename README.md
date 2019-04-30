@@ -1,4 +1,5 @@
 ### Installation
+Make sure you have python3.7.x and httpd installed
 Clone this repo to a working directory on your Linux server and run backend/install/FlashInstall.sh with root privs
 
 ### Start server
