@@ -1,0 +1,12 @@
+[Unit]
+Description=Server Listener for Mark Logic Discovery Workbench developed by Cal Poly Capstone Team Flash
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /Flash/backend/server.py
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
