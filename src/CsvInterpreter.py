@@ -58,7 +58,6 @@ class Column:
         examples_list = ""
 
         for i in range(min(len(self.examples), 10)):
-            examples_list += '"%s":[],' %(self.examples[i])
-        examples_list += '"tag":[{ "id":"%s" }],' %(self.id)
-        examples_list += '"file_data":[{ "name":"%s" }]}' %(self.source.filename)
+           examples_list += '"%s":[{"source":"%s"}],' %(self.examples[i], self.source.filename)
+        examples_list += '"tag":[{ "id":"%s" }]}' %(self.id)
         return start + examples_list
