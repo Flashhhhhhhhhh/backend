@@ -50,8 +50,94 @@
     "MARRIED married single Yes No": {
       "tags": ["MARRIED",  "MARRIED","N","N","N"]
     },
-    "married married single yes no": { 
+    "married married single yes no": {
       "tags": ["MARRIED",  "MARRIED","N","N","N"]
+    }
+  },
+  "ANIMALS": {
+    "ANIMALS Dog Cat Lion Monkey Bird": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    },
+    "animals dog cat lion monkey bird": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    },
+    "PETS Dog Cat Hamster Lizard Fish": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    },
+    "pets dog cat hamster lizard fish": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    }
+  },
+  "MEDICINE": {
+    "MEDICINE Ibuprofen Acetaminophen Penicillin Codeine Insulin": {
+      "tags": ["MEDICINE", "N", "N", "N", "N", "N"]
+    },
+    "medicine ibuprofen acetaminophen penicillin codeine insulin": {
+      "tags": ["MEDICINE", "N", "N", "N", "N", "N"]
+    }
+  },
+  "AUTOMOBILE": {
+    "AUTOMOBILE Toyota Honda Tesla Audi BMW": {
+      "tags": ["AUTOMOBILE", "N", "N", "N", "N", "N"]
+    },
+    "automobile toyota honda tesla audi bmw": {
+      "tags": ["AUTOMOBILE", "N", "N", "N", "N", "N"]
+    },
+    "VEHICLE Toyota Honda Tesla Audi BMW": {
+      "tags": ["AUTOMOBILE", "N", "N", "N", "N", "N"]
+    },
+    "vehicle toyota honda tesla audi bmw": {
+      "tags": ["AUTOMOBILE", "N", "N", "N", "N", "N"]
+    },
+    "CAR Toyota Honda Tesla Audi BMW": {
+      "tags": ["AUTOMOBILE", "N", "N", "N", "N", "N"]
+    },
+    "car toyota honda tesla audi bmw": {
+      "tags": ["AUTOMOBILE", "N", "N", "N", "N", "N"]
+    }
+  },
+  "COLOR": {
+    "COLOR Red Blue Yellow Green White Black": {
+      "tags": ["COLOR", "N", "N", "N", "N", "N", "N"]
+    },
+    "color red blue yellow green white black": {
+      "tags": ["COLOR", "N", "N", "N", "N", "N", "N"]
+    },
+    "COLOUR Red Blue Yellow Green White Black": {
+      "tags": ["COLOR", "N", "N", "N", "N", "N", "N"]
+    },
+    "colour red blue yellow green white black": {
+      "tags": ["COLOR", "N", "N", "N", "N", "N", "N"]
+    }
+  },
+  "COUNTRY": {
+    "COUNTRY USA Canada Mexico Italy Spain India China Japan": {
+      "tags": ["COUNTRY", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "country usa canada mexico italy spain india china japan": {
+      "tags": ["COUNTRY", "N", "N", "N", "N", "N", "N", "N", "N"]
+    }
+  },
+  "OCCUPATION": {
+    "OCCUPATION Engineer Teacher Professor Server Coach Manager": {
+      "tags": ["OCCUPATION", "N", "N", "N", "N", "N", "N"]
+    },
+    "occupation engineer teacher professor server coach manager": {
+      "tags": ["OCCUPATION", "N", "N", "N", "N", "N", "N"]
+    },
+    "JOB Engineer Teacher Professor Server Coach Manager": {
+      "tags": ["OCCUPATION", "N", "N", "N", "N", "N", "N"]
+    },
+    "job engineer teacher professor server coach manager": {
+      "tags": ["OCCUPATION", "N", "N", "N", "N", "N", "N"]
+    }
+  },
+  "EDUCATION": {
+    "EDUCATION HS Bachelors Masters PhD": {
+      "tags": ["EDUCATION", "N", "N", "N", "N"]
+    },
+    "education hs bachelors masters phd": {
+      "tags": ["EDUCATION", "N", "N", "N", "N"]
     }
   }
 }
