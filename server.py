@@ -5,23 +5,11 @@ from flask import request, jsonify
 from src import DataClassifier
 import werkzeug
 import json
+import os
 
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
-
-testData = [
-   {
-      "name" : "Barry Allen",
-      "age" : 21,
-      "occupation" : "Hosptial Analyst"
-   },
-   {
-      "name" : "test",
-      "age" : 55,
-      "occupation" : "Thing Doer"
-   },
-]
 
 class TestData(Resource):
    def get(self, name):
@@ -44,7 +32,19 @@ class UpdateFinal(Resource):
       convertedFile = json_file
       return convertedFile, 200 # return
 
+class Update(Resource):
+   # taking tags with user changes
+   def get(self, name):
+      TrainingDataMaker.makeTrainingData(request.files['data_file'])
+      return 200 # return
+
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-app.run(debug=True,host='0.0.0.0',port=5001)
+api.add_resource(UpdateFinal, "/update")
+
+workingDir = os.system("pwd")
+if workingDir == "/Flash/backend":
+   app.run(debug=True,host='0.0.0.0',port=5000)
+else:
+   app.run(debug=True,host='0.0.0.0',port=5002)
