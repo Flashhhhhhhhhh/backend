@@ -41,7 +41,7 @@ class Update(Resource):
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-api.add_resource(UpdateFinal, "/update")
+api.add_resource(Update, "/update")
 
 workingDir = os.system("pwd")
 if workingDir == "/Flash/backend":
