@@ -34,7 +34,7 @@ class UpdateFinal(Resource):
 
 class Update(Resource):
    # taking tags with user changes
-   def get(self, name):
+   def post(self, name):
       TrainingDataMaker.makeTrainingData(request.files['data_file'])
       return 200 # return
 
