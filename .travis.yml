@@ -3,7 +3,7 @@ python:
   - "3.6"
 # Install dependencies
 install:
-   - pip install
+   - pip install pytest
 # command to run tests
 script:
   - pytest
