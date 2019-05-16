@@ -271,5 +271,19 @@
     "disability amputation bipolar deaf blind adhd ocd": {
       "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N"]
     }
+  },
+  "TEETH": {
+    "TEETH Incisor Canine Premolar Molar Wisdom": {
+      "tags": ["TEETH", "N", "N", "N", "N", "N"]
+    },
+    "teeth incisor canine premolar molar wisdom": {
+      "tags": ["TEETH", "N", "N", "N", "N", "N"]
+    },
+    "TOOTH Incisor Canine Premolar Molar Wisdom": {
+      "tags": ["TEETH", "N", "N", "N", "N", "N"]
+    },
+    "tooth incisor canine premolar molar wisdom": {
+      "tags": ["TEETH", "N", "N", "N", "N", "N"]
+    }
   }
 }
