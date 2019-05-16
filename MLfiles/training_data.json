@@ -118,6 +118,14 @@
       "tags": ["COUNTRY", "N", "N", "N", "N", "N", "N", "N", "N"]
     }
   },
+  "ANCESTORY": {
+    "ANCESTORY USA Canada Mexico Italy Spain India China Japan": {
+      "tags": ["ANCESTORY", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "ancestory usa canada mexico italy spain india china japan": {
+      "tags": ["ANCESTORY", "N", "N", "N", "N", "N", "N", "N", "N"]
+    }
+  },
   "OCCUPATION": {
     "OCCUPATION Engineer Teacher Professor Server Coach Manager": {
       "tags": ["OCCUPATION", "N", "N", "N", "N", "N", "N"]
@@ -138,6 +146,130 @@
     },
     "education hs bachelors masters phd": {
       "tags": ["EDUCATION", "N", "N", "N", "N"]
+    }
+  },
+  "CURRICULUM": {
+    "CURRICULUM Math English Biology History Chemistry": {
+      "tags": ["CURRICULUM", "N", "N", "N", "N", "N"]
+    },
+    "SUBJECTS Math English Biology History Chemistry": {
+      "tags": ["CURRICULUM", "N", "N", "N", "N", "N"]
+    },
+    "curriculum math english biology history chemistry": {
+      "tags": ["CURRICULUM", "N", "N", "N", "N", "N"]
+    },
+    "subjects math english biology history chemistry": {
+      "tags": ["CURRICULUM", "N", "N", "N", "N", "N"]
+    }
+  },
+  "LANGUAGE": {
+    "LANGUAGE English Spanish Chinese French Hindi": {
+      "tags": ["LANGUAGE", "N", "N", "N", "N", "N"]
+    },
+    "language english spanish chinese french hindi": {
+      "tags": ["LANGUAGE", "N", "N", "N", "N", "N"]
+    }
+  },
+  "SPORT": {
+    "SPORT Football Soccer Basketball Volleyball": {
+      "tags": ["SPORT", "N", "N", "N", "N"]
+    },
+    "sport football soccer basketball volleyball": {
+      "tags": ["sport", "N", "N", "N", "N"]
+    }
+  },
+  "ORGAN": {
+    "ORGAN Liver Kidney Heart Stomach Brain": {
+      "tags": ["ORGAN", "N", "N", "N", "N", "N"]
+    },
+    "organ liver kidney heart stomach brain": {
+      "tags": ["ORGAN", "N", "N", "N", "N", "N"]
+    }
+  },
+  "BONE": {
+    "BONE Ribs Cranium Clavicle Femur Fibia Fibula": {
+      "tags": ["BONE", "N", "N", "N", "N", "N", "N"]
+    },
+    "bone ribs cranium clavicle femur fibia fibula": {
+      "tags": ["bone", "N", "N", "N", "N", "N"]
+    }
+  },
+  "BEVERAGE": {
+    "BEVERAGE Water Juice Soda Lemonade Pepsi Fanta Sprite Coffee Tea": {
+      "tags": ["BEVERAGE", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "beverage water juice soda lemonade pepsi fanta sprite coffee tea": {
+      "tags": ["BEVERAGE", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "DRINK Water Juice Soda Lemonade Pepsi Fanta Sprite Coffee Tea": {
+      "tags": ["BEVERAGE", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "drink water juice soda lemonade pepsi fanta sprite coffee tea": {
+      "tags": ["BEVERAGE", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "LIQUID Water Juice Soda Lemonade Pepsi Fanta Sprite Coffee Tea": {
+      "tags": ["BEVERAGE", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "liquid water juice soda lemonade pepsi fanta sprite coffee tea" : {
+      "tags": ["BEVERAGE", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
+    },
+    "SODA Pepsi Fanta Sprite ": {
+      "tags": ["BEVERAGE", "N", "N", "N"]
+    },
+    "soda pepsi fanta sprite" : {
+      "tags": ["BEVERAGE", "N", "N", "N"]
+    }
+  },
+  "ALCOHOL": {
+    "ALCOHOL Vodka Gin Tequila Whiskey Cognac": {
+      "tags": ["ALCOHOL", "N", "N", "N", "N", "N"]
+    },
+    "alcohol vodka gin tequila whiskey cognac": {
+      "tags": ["ALCOHOL", "N", "N", "N", "N", "N"]
+    }
+  },
+  "CHILDREN": {
+    "CHILDREN 1 2 3 4 5 6": {
+      "tags": ["CHILDREN", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER"]
+    },
+    "children 1 2 3 4 5 6": {
+      "tags": ["CHILDREN", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER"]
+    },
+    "KIDS 1 2 3 4 5 6": {
+      "tags": ["CHILDREN", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER"]
+    },
+    "kids 1 2 3 4 5 6": {
+      "tags": ["CHILDREN", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER", "NUMBER"]
+    }
+  },
+  "DISEASE": {
+    "DISEASE Hypertension Endometriosis HIV AIDS Alzheimer's": {
+      "tags": ["DISEASE", "N", "N", "N", "N", "N"]
+    },
+    "disease hypertension endometriosis hiv aids alzheimer's": {
+      "tags": ["DISEASE", "N", "N", "N", "N", "N"]
+    }
+  },
+  "ILLNESS": {
+    "ILLNESS Allergies Influenza Anxiety Asthma Infection": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    },
+    "illness allergies influenza anxiety asthma infection": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    },
+    "SICKNESS Allergies Influenza Anxiety Asthma Infection": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    },
+    "sickness allergies influenza anxiety asthma infection": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    }
+  },
+  "DISABILITY": {
+    "DISABILITY Amputation Bipolar Deaf Blind ADHD OCD": {
+      "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N"]
+    },
+    "disability amputation bipolar deaf blind adhd ocd": {
+      "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N"]
     }
   }
 }
