@@ -3,13 +3,13 @@
 import pandas as pd
 import uuid
 
-def get_headers(csv):
-    column_list = parse_file(csv)
+def get_headers(csv_file):
+    column_list = parse_file("/Flash/" + csv_file)
     json = generate_json(column_list)
     return json
 
-def parse_file(csv):
-    data_frame = pd.read_csv(csv);
+def parse_file(csv_file):
+    data_frame = pd.read_csv(csv_file);
     ml_headers = data_frame.columns.tolist();
     csv_headers = data_frame.values.tolist()[0];
     column_list = []
@@ -19,7 +19,7 @@ def parse_file(csv):
         for ex in (data_frame[1:][ml_headers[i]]):
             if (ex not in example_list):
                 example_list.append(ex)
-        col = Column(ml_headers[i], csv_headers[i], csv, example_list)
+        col = Column(ml_headers[i], csv_headers[i], csv_file, example_list)
         column_list.append(col)
 
     return column_list
@@ -58,6 +58,6 @@ class Column:
         examples_list = ""
 
         for i in range(min(len(self.examples), 10)):
-           examples_list += '"%s":[{"source":"%s"}],' %(self.examples[i], self.source.filename)
+           examples_list += '"%s":[{"source":"%s"}],' %(self.examples[i], self.source)
         examples_list += '"tag":[{ "id":"%s" }]}' %(self.id)
         return start + examples_list
