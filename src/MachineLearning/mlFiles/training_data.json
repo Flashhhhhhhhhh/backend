@@ -55,17 +55,17 @@
     }
   },
   "ANIMALS": {
-    "ANIMALS Dog Cat Lion Monkey Bird": {
-      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    "ANIMALS Dog Cat Lion Monkey Bird None Yes No": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "animals dog cat lion monkey bird": {
-      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    "animals dog cat lion monkey bird none yes no": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "PETS Dog Cat Hamster Lizard Fish": {
-      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    "PETS Dog Cat Hamster Lizard Fish None Yes No": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "pets dog cat hamster lizard fish": {
-      "tags": ["ANIMALS", "N", "N", "N", "N", "N"]
+    "pets dog cat hamster lizard fish none yes no": {
+      "tags": ["ANIMALS", "N", "N", "N", "N", "N", "N", "N", "N"]
     }
   },
   "MEDICINE": {
@@ -243,33 +243,33 @@
     }
   },
   "DISEASE": {
-    "DISEASE Hypertension Endometriosis HIV AIDS Alzheimer's": {
-      "tags": ["DISEASE", "N", "N", "N", "N", "N"]
+    "DISEASE Hypertension Endometriosis HIV AIDS Alzheimer's Yes No None": {
+      "tags": ["DISEASE", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "disease hypertension endometriosis hiv aids alzheimer's": {
-      "tags": ["DISEASE", "N", "N", "N", "N", "N"]
+    "disease hypertension endometriosis hiv aids alzheimer's yes no none": {
+      "tags": ["DISEASE", "N", "N", "N", "N", "N", "N", "N", "N"]
     }
   },
   "ILLNESS": {
-    "ILLNESS Allergies Influenza Anxiety Asthma Infection": {
-      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    "ILLNESS Allergies Influenza Anxiety Asthma Infection Yes No None": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "illness allergies influenza anxiety asthma infection": {
-      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    "illness allergies influenza anxiety asthma infection yes no none": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "SICKNESS Allergies Influenza Anxiety Asthma Infection": {
-      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    "SICKNESS Allergies Influenza Anxiety Asthma Infection Yes No None": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "sickness allergies influenza anxiety asthma infection": {
-      "tags": ["ILLNESS", "N", "N", "N", "N", "N"]
+    "sickness allergies influenza anxiety asthma infection yes no none": {
+      "tags": ["ILLNESS", "N", "N", "N", "N", "N", "N", "N", "N"]
     }
   },
   "DISABILITY": {
-    "DISABILITY Amputation Bipolar Deaf Blind ADHD OCD": {
-      "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N"]
+    "DISABILITY Amputation Bipolar Deaf Blind ADHD OCD Yes No None": {
+      "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
     },
-    "disability amputation bipolar deaf blind adhd ocd": {
-      "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N"]
+    "disability amputation bipolar deaf blind adhd ocd yes no none": {
+      "tags": ["DISABILITY", "N", "N", "N", "N", "N", "N", "N", "N", "N"]
     }
   },
   "TEETH": {
@@ -284,6 +284,36 @@
     },
     "tooth incisor canine premolar molar wisdom": {
       "tags": ["TEETH", "N", "N", "N", "N", "N"]
+    }
+  },
+  "SHAPE": {
+    "SHAPE Circle Square Rectangle Triangle Hexagon": {
+      "tags": ["SHAPE", "N", "N", "N", "N", "N"]
+    },
+    "shape circle square rectangle triangle hexagon": {
+      "tags": ["SHAPE", "N", "N", "N", "N", "N"]
+    }
+  },
+  "SEASON": {
+    "SEASON Summer Fall Autumn Winter Spring": {
+        "tags": ["SEASON", "N", "N", "N", "N", "N"]
+    },
+    "season summer fall autumn winter spring": {
+        "tags": ["SEASON", "N", "N", "N", "N", "N"]
+    }
+  },
+  "ASTROLOGY": {
+    "ASTROLOGY Leo Virgo Libra Scorpio Capricorn Sagittarius": {
+      "tags": ["ASTROLOGY", "N", "N", "N", "N", "N", "N"]
+    },
+    "astrology leo virgo libra scorpio capricorn sagittarius": {
+      "tags": ["ASTROLOGY", "N", "N", "N", "N", "N", "N"]
+    },
+    "HOROSCOPE Leo Virgo Libra Scorpio Capricorn Sagittarius": {
+      "tags": ["ASTROLOGY", "N", "N", "N", "N", "N", "N"]
+    },
+    "horoscope leo virgo libra scorpio capricorn sagittarius": {
+      "tags": ["ASTROLOGY", "N", "N", "N", "N", "N", "N"]
     }
   }
 }
