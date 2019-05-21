@@ -46,12 +46,14 @@ class Column:
         self.source = source
         self.examples = examples
         self.id = uuid.uuid4()
+        self.ml_name = findMLName(ml_name)
 
+    def findMLName(ml_name):
         if "UNKNOWN" in ml_name:
-            #print("MAYBE: " + csv_name)
-            self.ml_name = "MAYBE: " + csv_name
+            label = "MAYBE: " + csv_name
+            return label
         else:
-            self.ml_name = ml_name
+            return ml_name
 
     def print_header(self):
         start = '"%s":{' %(self.ml_name)
