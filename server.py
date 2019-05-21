@@ -6,6 +6,7 @@ from src import DataClassifier
 import werkzeug
 import json
 import os
+import subprocess
 
 app = Flask(__name__)
 CORS(app)
@@ -55,7 +56,5 @@ class UpdateFinal(Resource):
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-
-userPort = 5000 if os.system("pwd") == "/Flash/backend" else input("Enter a port: ")
 
 app.run(debug=True,host='0.0.0.0', port=userPort)
