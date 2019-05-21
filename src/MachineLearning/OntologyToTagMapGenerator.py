@@ -2,18 +2,28 @@ import json
 import os
 from pprint import pprint
 
-def create_tag_map():
+def create_tag_map(ont_list):
    #needs path to directory in S3 called "inputOntolgy"
    ontology_dir = '/Flash/inputOntology'
    #needs path to directory in S3 called "MLfiles"
    tag_map_dir = '/Flash/tag_map.json'
-   for filename in os.listdir(ontology_dir):
-      make_tag_map((ontology_dir+"/"+filename), tag_map_dir)
 
+   #print("tag_map")
+   #print(ont_list)   
 
-def make_tag_map(filename,output_dir):
-   with open(filename) as tag_map:
-      loaded_json = json.load(tag_map)
+   if not ont_list:
+      for filename in os.listdir(ontology_dir):
+         with open((ontology_dir+"/"+filename)) as ont_tag_map:
+            loaded_json = json.load(ont_tag_map)
+         make_tag_map(loaded_json, tag_map_dir)
+   else: 
+      j = json.load(ont_list)
+      make_tag_map(j,tag_map_dir)
+
+def make_tag_map(loaded_json,output_dir):
+   #with open(ont_path) as ont_tag_map:
+      #loaded_json = json.load(ont_tag_map)
+   #print(loaded_json)
    with open(output_dir,'w') as tag_map:
       tag_map.write("{\n")
       for header in loaded_json:
@@ -30,7 +40,6 @@ def make_tag_map(filename,output_dir):
       tag_map.write(line)
       tag_map.write("}")
 
-create_tag_map()
 
 
 

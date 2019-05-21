@@ -35,8 +35,11 @@ def classify_each_file(nlp, file):
         for row in file:
             append_file.write(row)
 
-def run_on_files(nlp, file_list):
+def run_on_files(nlp, file_list):    
+    #print("for loop")
+    #print(file_list)
     for curr_file in file_list:
+       # print(curr_file)
         classify_each_file(nlp,curr_file)
 
 
@@ -51,6 +54,10 @@ def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
     train the tagger with a custom tag map, we're creating a new Language
     instance with a custom vocab.
     """
+    
+    #print("top")
+    #print(file_list)
+ 
     nlp = spacy.blank(lang)
     # add the tagger to the pipeline
     # nlp.create_pipe works for built-ins that are registered with spaCy
@@ -63,14 +70,20 @@ def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
     # needs path to directory in S3 called "MLfiles"
     tag_map = json.load(tag_map_file)
     TAG_MAP = tag_map
+    #print(TAG_MAP)
 
     #Open file to get training data
 
     training_data_file = open("/Flash/curr_training_data.json")
     training_data = json.load(training_data_file)
+    #print(training_data)
+    TRAIN_DATA = []
     for key, value in training_data.items():
         temp = [key,value]
         TRAIN_DATA.append(temp)
+
+    #print(TRAIN_DATA)
+
 
     #reads in tags
     for tag, values in TAG_MAP.items():
@@ -87,7 +100,9 @@ def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
         for batch in batches:
             texts, annotations = zip(*batch)
             nlp.update(texts, annotations, sgd=optimizer, losses=losses)
-
+   
+    #print("classify")
+    #print(file_list)
     run_on_files(nlp, file_list)
 
 def make_column_tags(nlp,file):
@@ -104,7 +119,7 @@ def make_column_tags(nlp,file):
         doc = nlp(column)
         column = ""
         #print('Tags', [(t.text, t.tag_, t.pos_) for t in doc])
-        print('Tag', doc[0].text, doc[0].tag_)
+        #print('Tag', doc[0].text, doc[0].tag_)
         column_tags.append(doc[0].tag_)
     return column_tags
 
