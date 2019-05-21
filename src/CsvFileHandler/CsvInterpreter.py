@@ -60,8 +60,9 @@ class Column:
     def print_header(self):
         start = '"%s":{' %(self.ml_name)
         examples_list = ""
+        exported_filename = self.source.split('Classified.csv')[0] + ".csv"
 
         for i in range(min(len(self.examples), 10)):
-           examples_list += '"%s":[{"source":"%s", "confidence":"%s"}],' %(self.examples[i], self.source, self.confidence)
+           examples_list += '"%s":[{"source":"%s", "confidence":"%s"}],' %(self.examples[i], exported_filename, self.confidence)
         examples_list += '"tag":[{ "id":"%s" }]}' %(self.id)
         return start + examples_list

@@ -5,6 +5,7 @@ from flask import request, jsonify
 from src import DataClassifier
 import werkzeug
 import json
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -55,6 +56,6 @@ api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
 
-port = input("Enter a port: ")
+userPort = 5000 if os.system("pwd") == "/Flash/backend" else input("Enter a port: ")
 
-app.run(debug=True,host='0.0.0.0',port=port)
+app.run(debug=True,host='0.0.0.0', port=userPort)
