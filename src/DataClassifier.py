@@ -11,8 +11,7 @@ def classify_data(csv_file):
     TrainingDataGenerator.create_training_data()
     MLClassifier.classify_files([csv_file])
 
-    print(csv_file)
-    CsvInterpreter.get_headers(csv_file.name + "Classified.csv")
+    CsvInterpreter.get_headers(csv_file.filename.split('.')[0] + "Classified.csv")
     headers = load(open("headers.json", "r"))
     return jsonify(headers)
 
