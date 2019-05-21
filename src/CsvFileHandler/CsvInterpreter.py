@@ -51,12 +51,6 @@ class Column:
         self.confidence = "UNKNOWN" if "UNKNOWN" in ml_name else "MAYBE"
         self.ml_name = ml_name if self.confidence == "MAYBE" else csv_name
 
-        #if "UNKNOWN" in ml_name:
-        #    #print("MAYBE: " + csv_name)
-        #    self.ml_name = "MAYBE: " + csv_name
-        #else:
-        #    self.ml_name = ml_name
-
     def print_header(self):
         start = '"%s":{' %(self.ml_name)
         examples_list = ""
