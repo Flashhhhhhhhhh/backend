@@ -3,39 +3,57 @@
 import pandas as pd
 import uuid
 
-def get_headers(csv_file):
-    column_list = parse_file("/Flash/" + csv_file)
-    json = generate_json(column_list)
+def get_headers(csv_files):
+    data_dict = parse_files(csv_files)
+    json = generate_json(data_dict)
     return json
 
-def parse_file(csv_file):
-    data_frame = pd.read_csv(csv_file);
-    ml_headers = data_frame.columns.tolist();
-    csv_headers = data_frame.values.tolist()[0];
-    column_list = []
+def parse_files(csv_files):
+    data_dict = {}
+    for csv_file in csv_files:
+        print(csv_file)
+        data_frame = pd.read_csv("/Flash/" + csv_file.filename[:-4] + "Classified.csv");
+        ml_headers = data_frame.columns.tolist();
+        csv_headers = data_frame.values.tolist()[0];
 
-    for i in range(len(csv_headers)):
-        example_list = []
-        for ex in (data_frame[1:][ml_headers[i]]):
-            if (ex not in example_list):
-                example_list.append(ex)
-        col = Column(ml_headers[i], csv_headers[i], csv_file, example_list)
-        column_list.append(col)
+        for i in range(len(csv_headers)):
+            example_list = []
+            for ex in (data_frame[1:][ml_headers[i]]):
+                if (ex not in example_list):
+                    example_list.append(ex)
+            col = Column(ml_headers[i], csv_headers[i], csv_file.filename, example_list)
 
-    return column_list
+            key = col.get_name()
+            if key in data_dict:
+                data_dict[key].append(col)
+            else:
+                data_dict[key] = [col]
 
-def generate_json(column_list):
+    return data_dict
+
+def generate_json(data_dict):
     file = open('headers.json', 'w')
     with file as json:
-        isLast = len(column_list) - 1
         json.write("{");
-        line = ""
-        for col in column_list:
-            line += col.print_header()
-            if isLast == 0:
-                json.write(line)
-            line += ","
-            isLast -= 1
+        isLastKey = len(data_dict.keys()) - 1
+        for key in data_dict.keys():
+            json.write('"%s":{' %(key))
+            col_list = data_dict[key]
+            isLastCol = len(col_list) - 1
+            line = ""
+            for col in col_list:
+                line += col.print_examples()
+                if isLastCol == 0:
+                    json.write(line)
+                line += ","
+                isLastCol -= 1
+
+            if isLastKey > 0:
+               json.write("},")
+            else:
+               json.write("}")
+            isLastKey -= 1
+
         json.write("}")
     file.close()
     return file
@@ -47,17 +65,34 @@ class Column:
         self.examples = examples
         self.id = uuid.uuid4()
 
-        if "UNKNOWN" in ml_name:
-            #print("MAYBE: " + csv_name)
-            self.ml_name = "MAYBE: " + csv_name
-        else:
-            self.ml_name = ml_name
+        self.confidence = "UNKNOWN" if "UNKNOWN" in ml_name else "MAYBE"
+        self.ml_name = ml_name if self.confidence == "MAYBE" else csv_name
 
-    def print_header(self):
-        start = '"%s":{' %(self.ml_name)
+    def get_name(self):
+        return self.ml_name
+
+    def print_column(self):
+        if "UNKOWN" in ml_name:
+            classified_name = "MAYBE: " + csv_name
+        else:
+            classified_name = ml_name
+
+        start = '"%s":{' %(classified_name)
         examples_list = ""
 
         for i in range(min(len(self.examples), 10)):
            examples_list += '"%s":[{"source":"%s"}],' %(self.examples[i], self.source)
         examples_list += '"tag":[{ "id":"%s" }]}' %(self.id)
         return start + examples_list
+
+    def print_examples(self):
+        examples_list = ""
+        #exported_filename = self.source.split('Classified.csv.')[0] + ".csv"
+        isLast = len(self.examples) - 1
+
+        for ex in self.examples:
+           examples_list += '"%s":[{"source":"%s", "confidence":"%s"}]' %(ex, self.source, self.confidence)
+           if isLast > 0:
+               examples_list += ','
+           isLast -= 1
+        return examples_list

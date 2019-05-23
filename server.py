@@ -33,12 +33,8 @@ class TestData(Resource):
 class FileUpload(Resource):
    # sending file to backend from frontend
    def post(self):
-      print("Reached port 5004")
-      f = request.files['data_file'] #request the csv file
-      print(request.files)
-      #csv_data_array = request.form['file'] # get the file array
-      #csv_file = csv_data_array[0] # get the specific csv file
-      convertedFile = DataClassifier.classify_data(f) #run the algorithm
+      files = request.files.getlist('data_file')
+      convertedFile = DataClassifier.classify_data(files) #run the algorithm
       headers = json.load(open("headers.json", "r"))
       return jsonify(headers) #return
 
@@ -54,4 +50,4 @@ class UpdateFinal(Resource):
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-app.run(debug=True,host='0.0.0.0',port=5000)
+app.run(debug=True,host='0.0.0.0',port=5004)

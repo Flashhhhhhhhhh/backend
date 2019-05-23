@@ -5,14 +5,13 @@ from src.CsvFileHandler import CsvInterpreter
 from src.MachineLearning import OntologyToTagMapGenerator, TrainingDataGenerator, MLClassifier
 from json import load
 
-def classify_data(csv_file):
+def classify_data(csv_files):
     # ML components
     OntologyToTagMapGenerator.create_tag_map()
     TrainingDataGenerator.create_training_data()
-    MLClassifier.classify_files([csv_file])
+    MLClassifier.classify_files(csv_files)
 
-    print(csv_file)
-    CsvInterpreter.get_headers(csv_file.name + "Classified.csv")
+    CsvInterpreter.get_headers(csv_files)
     headers = load(open("headers.json", "r"))
     return jsonify(headers)
 

@@ -21,7 +21,7 @@ TAG_MAP = {}
 TRAIN_DATA = []
 
 def classify_each_file(nlp, file):
-    new_filename = file.name+"Classified.csv"
+    new_filename = file.filename[:-4]+"Classified.csv"
     column_tags =[]
     #df = pd.read_csv(file)
     column_tags = make_column_tags(nlp,file)
@@ -35,10 +35,9 @@ def classify_each_file(nlp, file):
         for row in file:
             append_file.write(row)
 
-    print(new_filename)
-
 def run_on_files(nlp, file_list):
     for curr_file in file_list:
+        print(curr_file.filename)
         classify_each_file(nlp,curr_file)
 
 
