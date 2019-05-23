@@ -35,7 +35,7 @@ def classify_each_file(nlp, file):
         for row in file:
             append_file.write(row)
 
-def run_on_files(nlp, file_list):
+def run_on_files(nlp, file_list):    
     for curr_file in file_list:
         classify_each_file(nlp,curr_file)
 
@@ -68,6 +68,7 @@ def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
 
     training_data_file = open("/Flash/curr_training_data.json")
     training_data = json.load(training_data_file)
+    TRAIN_DATA = []
     for key, value in training_data.items():
         temp = [key,value]
         TRAIN_DATA.append(temp)
@@ -87,7 +88,7 @@ def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
         for batch in batches:
             texts, annotations = zip(*batch)
             nlp.update(texts, annotations, sgd=optimizer, losses=losses)
-
+   
     run_on_files(nlp, file_list)
 
 def make_column_tags(nlp,file):
@@ -103,8 +104,6 @@ def make_column_tags(nlp,file):
             column += " "+str(item)
         doc = nlp(column)
         column = ""
-        #print('Tags', [(t.text, t.tag_, t.pos_) for t in doc])
-        print('Tag', doc[0].text, doc[0].tag_)
         column_tags.append(doc[0].tag_)
     return column_tags
 
