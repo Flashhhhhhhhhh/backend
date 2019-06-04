@@ -21,7 +21,7 @@ TAG_MAP = {}
 TRAIN_DATA = []
 
 def classify_each_file(nlp, file):
-    new_filename = file.filename[:-4]+"Classified.csv"
+    new_filename = file.filename.split('.')[0]+"Classified.csv"
     column_tags =[]
     #df = pd.read_csv(file)
     column_tags = make_column_tags(nlp,file)
@@ -69,6 +69,7 @@ def classify_files(file_list, lang='en', output_dir=None, n_iter=25):
 
     training_data_file = open("/Flash/curr_training_data.json")
     training_data = json.load(training_data_file)
+    TRAIN_DATA = []
     for key, value in training_data.items():
         temp = [key,value]
         TRAIN_DATA.append(temp)
@@ -104,8 +105,6 @@ def make_column_tags(nlp,file):
             column += " "+str(item)
         doc = nlp(column)
         column = ""
-        #print('Tags', [(t.text, t.tag_, t.pos_) for t in doc])
-        print('Tag', doc[0].text, doc[0].tag_)
         column_tags.append(doc[0].tag_)
     return column_tags
 

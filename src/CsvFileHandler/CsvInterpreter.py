@@ -10,9 +10,10 @@ def get_headers(csv_files):
 
 def parse_files(csv_files):
     data_dict = {}
+    #print(csv_files)
     for csv_file in csv_files:
         print(csv_file)
-        data_frame = pd.read_csv("/Flash/" + csv_file.filename[:-4] + "Classified.csv");
+        data_frame = pd.read_csv("/Flash/" + csv_file.filename.split('.')[0] + "Classified.csv");
         ml_headers = data_frame.columns.tolist();
         csv_headers = data_frame.values.tolist()[0];
 
@@ -79,9 +80,10 @@ class Column:
 
         start = '"%s":{' %(classified_name)
         examples_list = ""
+        exported_filename = self.source.split('Classified.csv')[0] + ".csv"
 
         for i in range(min(len(self.examples), 10)):
-           examples_list += '"%s":[{"source":"%s"}],' %(self.examples[i], self.source)
+           examples_list += '"%s":[{"source":"%s", "confidence":"%s"}],' %(self.examples[i], exported_filename, self.confidence)
         examples_list += '"tag":[{ "id":"%s" }]}' %(self.id)
         return start + examples_list
 

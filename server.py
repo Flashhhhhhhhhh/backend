@@ -5,6 +5,8 @@ from flask import request, jsonify
 from src import DataClassifier
 import werkzeug
 import json
+import os
+import subprocess
 
 app = Flask(__name__)
 CORS(app)
@@ -34,7 +36,7 @@ class FileUpload(Resource):
    # sending file to backend from frontend
    def post(self):
       files = request.files.getlist('data_file')
-      convertedFile = DataClassifier.classify_data(files) #run the algorithm
+      convertedFile = DataClassifier.classify_data(files, []) #run the algorithm
       headers = json.load(open("headers.json", "r"))
       return jsonify(headers) #return
 
@@ -50,4 +52,4 @@ class UpdateFinal(Resource):
 api.add_resource(TestData, "/test/<string:name>")
 api.add_resource(FileUpload, "/upload")
 api.add_resource(UpdateFinal, "/updateFinal")
-app.run(debug=True,host='0.0.0.0',port=5004)
+app.run(debug=True,host='0.0.0.0',port=5000)
